@@ -1,0 +1,84 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+.order-card {
+    color: #fff;
+}
+
+.bg-c-blue {
+    background: linear-gradient(45deg,#225375,#225375);
+}
+
+.bg-c-green {
+    background: linear-gradient(45deg,#238D9C,#238D9C);
+}
+
+.bg-c-yellow {
+    background: linear-gradient(45deg,#3CA6A6,#3CA6A6);
+}
+
+.bg-c-pink {
+    background: linear-gradient(45deg,#FF5F5D,#FF5F5D);
+}
+.bg-c-bl {
+    background: linear-gradient(45deg,#184C78,#184C78 );
+}
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.card .card-block {
+        padding: 25px;
+}
+
+.order-card i {
+    font-size: 26px;
+}
+
+.f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
+}
+.row-top {
+    padding: 10px;
+    background-color: #F1F2EB;
+}
+.row-bottom {
+    padding: 10px;
+    background-color: #ECF0EE;
+}
+
+.order-card-menu {
+    border-radius: 0 !important;
+    color:#fff;
+}
+.cardlink {
+    width: 100%;
+    padding: 2px 2px 5px 5px;
+    opacity: 0.5;
+    background-color: #fff;
+   
+}
+
+

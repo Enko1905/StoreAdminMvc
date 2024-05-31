@@ -1,0 +1,43 @@
+﻿@model List<MainCategory>
+
+
+<div class="row">
+    <a class="btn btn-primary" class="btn btn-primary" asp-action="Create" asp-controller="MainCategory"  style="max-width: 200px;">
+        <i class="bi bi-plus-circle-fill"></i>
+        Yeni Kategori
+    </a>
+    <div class="col-sm-12 col-md-12 col-xl-12">
+        <table id="myTable" class="table table-bordered responsive nowrap" width="100%">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Kategori Adı</th>
+                    <th>Alt Kategori</th>
+                    <th>Işlem</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var MCate in Model)
+                {
+                    <tr>
+                        <td>@MCate.MainCategoryId</td>
+                        <td>@MCate.Name</td>
+
+                        <td><a asp-controller="Category" asp-action="Index" asp-route-id="@MCate.MainCategoryId">Kategorilere Git</a><sub>(99)</sub></td>
+                        <td>
+                            <div class="btn-group">
+                                <a asp-controller="MainCategory" asp-action="Update" asp-route-id="@MCate.MainCategoryId" class="btn btn-success">Güncelle</a>
+                                <a asp-controller="MainCategory" asp-action="Delete" asp-route-id="@MCate.MainCategoryId" onclick="return confirm('Kategori Silinsin mi ?')"  class="btn btn-outline-danger">Sil</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+
+</div>

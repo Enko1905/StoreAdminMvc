@@ -1,0 +1,18 @@
+﻿@model Products
+
+<h1>Received Product</h1>
+
+<p>Product Name: @Model.ProductName</p>
+<p>Images URL: @Model.ImagesUrl</p>
+<p>SubCategory ID: @Model.SubCategoryId</p>
+<p>Description: @Model.Description</p>
+<p>Price: @Model.Price</p>
+<p>Stock: @Model.Stok</p>
+
+<h2>Product Attributes</h2>
+<ul>
+    @foreach (var att in Model.ProductAttributes)
+    {
+        <li>@att.Type: @att.Value</li>
+    }
+</ul>

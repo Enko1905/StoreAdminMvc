@@ -1,0 +1,22 @@
+﻿@model MainCategory
+
+
+<div class="row d-flex justify-content-center align-items-center">
+    <div class="col-lg-6 col-md-8 col-sm-10 col-12">
+        <div class="p-3 border bg-light">
+
+            <form asp-controller="MainCategory" asp-action="Create">
+                <div class="mb-3">
+                    <label for="Kategori" class="form-label">Ana Kategori Adı</label>
+                    <input type="text" name="name" class="form-control" placeholder="'Elektronik'" id="Kategori">
+
+                </div>
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                    <a type="submit" asp-action="Index" asp-controller="MainCategory" class="btn btn-outline-primary">İptal</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

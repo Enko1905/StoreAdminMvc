@@ -1,0 +1,19 @@
+﻿
+@{
+    var toastMessage = TempData.GetToastMessage("ToastMessage");
+}
+
+@if (toastMessage != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right"
+            };
+
+            toastr['@toastMessage.MessageType']('@toastMessage.Message');
+        });
+    </script>
+}

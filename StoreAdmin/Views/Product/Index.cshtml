@@ -1,0 +1,57 @@
+﻿@model List<Products>
+
+<div class="row">
+    <div class="btn-group">
+        <a class="btn btn-primary" asp-controller="Product" asp-action="Create" style="max-width: 200px;">
+            <i class="bi bi-bag-plus-fill"></i>
+            Yeni Ürün Ekle
+        </a>
+        <a class="btn btn-outline-primary" asp-action="Index" asp-controller="Category" style="max-width: 200px;">
+            <i class="bi bi-house-up"></i>
+            Ürün Siparişler
+        </a>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-xl-12">
+        <table id="myTable" class="table table-bordered responsive nowrap" width="100%">
+
+            <thead>
+                <tr>
+
+                    <th>#</th>
+                    <th>Resim</th>
+                    <th>Ürün Adı</th>
+                    <th>Ürün Stok Adet</th>
+                    <th>Ürün Fiyatı</th>
+                    <th>Işlem</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Prd in Model)
+                {
+                    <tr>
+                        <td>@Prd.Id</td>
+                        <td>
+                            <img style="max-width:100px;" src="@(string.IsNullOrEmpty(Prd.ImagesUrl) ? Url.Content("~/AdminPanel/img/defaultproduct.jpg") : Prd.ImagesUrl)" alt="Product Image" />
+                        </td>
+                        <td>@Prd.ProductName</td>
+                        <td>@Prd.Stok</td>
+                        <td>@Prd.Price</td>
+                        <td>
+                            <div class="btn-group">
+                                <a asp-controller="SubCategory" asp-action="Update" class="btn btn-info text-light">Detay</a>
+                                <a asp-controller="Product" asp-action="Update" class="btn btn-success">Güncelle</a>
+                                <a asp-controller="Product" asp-action="Delete" asp-route-id="@Prd.Id" onclick="return confirm('Ürün Silinsin mi ?')" class="btn btn-outline-danger">Sil</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+
+</div>

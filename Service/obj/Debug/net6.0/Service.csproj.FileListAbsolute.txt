@@ -1,0 +1,15 @@
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\obj\Debug\net6.0\Service.csproj.AssemblyReference.cache
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\obj\Debug\net6.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\obj\Debug\net6.0\Service.AssemblyInfoInputs.cache
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\obj\Debug\net6.0\Service.AssemblyInfo.cs
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\obj\Debug\net6.0\Service.csproj.CoreCompileInputs.cache
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\bin\Debug\net6.0\Service.deps.json
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\bin\Debug\net6.0\Service.dll
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\bin\Debug\net6.0\Service.pdb
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\bin\Debug\net6.0\Entity.dll
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\bin\Debug\net6.0\Entity.pdb
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\obj\Debug\net6.0\Service.csproj.Up2Date
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\obj\Debug\net6.0\Service.dll
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\obj\Debug\net6.0\refint\Service.dll
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\obj\Debug\net6.0\Service.pdb
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Service\obj\Debug\net6.0\ref\Service.dll
