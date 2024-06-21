@@ -10,3 +10,4 @@ C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Entity\obj\Debug\net6.0\refint\Entit
 C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Entity\obj\Debug\net6.0\Entity.pdb
 C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Entity\obj\Debug\net6.0\ref\Entity.dll
 C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Entity\obj\Debug\net6.0\Entity.csproj.AssemblyReference.cache
+C:\Users\enkoc\OneDrive\Masaüstü\adminmvc\Entity\obj\Debug\net6.0\Entity.sourcelink.json

@@ -38,6 +38,7 @@ namespace StoreAdmin.Controllers
         public async Task<IActionResult> Create([FromRoute] int id=1)
         {
            ViewBag.MainCategory =await GetCategoriesSelectList(id);
+           
            return View();
         }
         [HttpPost]

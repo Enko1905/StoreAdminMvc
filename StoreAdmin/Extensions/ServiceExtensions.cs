@@ -26,6 +26,7 @@ namespace StoreAdmin.Extensions
             {
                 client.BaseAddress = new Uri(configuration.GetConnectionString("ApiBaseUrl"));
             })
+            //SSL Sorgulamayı iptal etme 
               .ConfigurePrimaryHttpMessageHandler(() =>
                {
                    var handler = new HttpClientHandler();
