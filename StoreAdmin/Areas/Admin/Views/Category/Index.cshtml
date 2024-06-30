@@ -1,0 +1,56 @@
+﻿@model Tuple<MainCategory,List<Category>>
+
+
+<div class="row">
+    <div class="btn-group">
+        <a class="btn btn-primary" asp-controller="Category" asp-area="admin" asp-action="Create" asp-route-id="@Model.Item1.Id" style="max-width: 200px;">
+        <i class="bi bi-plus-circle-fill"></i>
+        Yeni Kategori
+        </a>
+        <a class="btn btn-outline-primary" asp-action="Index" asp-area="admin" asp-controller="MainCategory" style="max-width: 200px;">
+            <i class="bi bi-house-up-fill"></i>
+            Üst Kategoriye Git
+        </a>
+    </div>
+    <h3><mark>@Model.Item1.Name.ToUpper()</mark>  Alt Kategorileri  </h3>
+
+    <div class="col-sm-12 col-md-12 col-xl-12">
+        <table id="myTable" class="table table-bordered responsive nowrap" width="100%">
+
+            <thead>
+                <tr>
+                   
+                    <th>#</th>
+                    <th>Kategori Adı</th>
+                    <th>Alt Kategori</th>
+                    <th>Işlem</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Cate in Model.Item2)
+                {
+                    <tr>
+                        <td>@Cate.Id</td>
+                        <td>@Cate.Name</td>
+
+                        <td>
+                            <a asp-controller="SubCategory" asp-action="Index" asp-area="admin" asp-route-id="@Cate.Id">Alt Kategorilere Git</a><sub>(99)</sub>
+
+                    </td>
+                        <td>
+                            <div class="btn-group">
+                                <a asp-controller="Category" asp-action="Update" asp-area="admin" asp-route-id="@Cate.Id" class="btn btn-success">Güncelle</a>
+                                <a asp-controller="Category" asp-action="Delete" asp-area="admin" asp-route-id1="@Cate.Id" asp-route-id2="@Cate.MainCategoryId" onclick="return confirm('Kategori Silinsin mi ?')" class="btn btn-outline-danger">Sil</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+
+</div>

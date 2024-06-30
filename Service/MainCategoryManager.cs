@@ -21,31 +21,31 @@ namespace Service
 
         public async Task<bool> CreateOne(MainCategory mainCategory)
         {
-            var response = await _httpClient.PostAsJsonAsync("MainCategory", mainCategory);
+            var response = await _httpClient.PostAsJsonAsync("mainCategory", mainCategory);
             return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteOne(int id)
         {
-            var response = await _httpClient.DeleteAsync($"MainCategory/{id}");
+            var response = await _httpClient.DeleteAsync($"mainCategory/{id}");
             return response.IsSuccessStatusCode;
         }
 
         public async Task<List<MainCategory>> GetAll()
         {
-            var response = await _httpClient.GetFromJsonAsync<List<MainCategory>>("MainCategory");
+            var response = await _httpClient.GetFromJsonAsync<List<MainCategory>>("mainCategory");
             return response.ToList();
         }
 
         public async Task<List<MainCategory>> GetFullAll()
         {
-            var response = await _httpClient.GetFromJsonAsync<List<MainCategory>>("MainCategory/FullSubMainCategory");
-            return response.ToList();
+            var response = await _httpClient.GetFromJsonAsync<List<MainCategory>>("mainCategory/GetAllSubMainCatregory");
+            return response.Where(x => x.MainCategoryStasus == true).ToList();
         }
 
         public async Task<MainCategory> GetOne(int id)
         {
-            var response = await _httpClient.GetFromJsonAsync<MainCategory>($"MainCategory/{id}");
+            var response = await _httpClient.GetFromJsonAsync<MainCategory>($"mainCategory/{id}");
             return response;
         }
 
@@ -53,7 +53,7 @@ namespace Service
 
         public async Task<bool> UpdateOne(int id, MainCategory mainCategory)
         {
-            var sonuc = await _httpClient.PutAsJsonAsync($"MainCategory/{id}", mainCategory);
+            var sonuc = await _httpClient.PutAsJsonAsync($"mainCategory/{id}", mainCategory);
             return sonuc.IsSuccessStatusCode;
         }
     }

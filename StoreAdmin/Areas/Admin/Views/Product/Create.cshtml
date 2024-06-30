@@ -1,0 +1,315 @@
+﻿@model Products
+
+<div class="row d-flex align-items-center">
+
+    <partial name="_SaveCloseButtonGroup"></partial>
+    <script>
+        function submitForm() {
+            document.getElementById("productForm").submit();
+        }
+    </script>
+    <div class="col-lg-12 col-md-12 col-sm-10">
+        <div class="p-3 border bg-light">
+
+            <form asp-action="Create" asp-controller="Product" id="productForm" method="post">
+                <a type="button" class="tablink" onclick="openPage('Urun', this, '#09527f') " id="defaultOpen" />Ürün</a>
+                <a class="tablink" onclick="openPage('attribute', this, '#09527f')">Ürün Özellikleri</a>
+                <a class="tablink" onclick="openPage('details', this, '#09527f')">Ürün Detay</a>
+                <a class="tablink" onclick="openPage('other', this, '#09527f')">Diğer</a>
+
+                <div id="Urun" class="tabcontent">
+                    <div class="form-group">
+                        <div class="mb-3 mt-3">
+                            <label for="productsku" class="form-label">Ürün SKU</label>
+                            <input type="text" class="form-control" id="productsku" placeholder="Ürün SKU Kodu Zorunlu Değil" name="SKU">
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="productName" class="form-label">Ürün Adı:</label>
+                            <input type="text" class="form-control" id="productName" placeholder="Ürün Adı Giriniz" name="productName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Ürün Açıklaması:</label>
+                            <input type="text" class="form-control" id="description" placeholder="Ürün Açıklaması Giriniz" name="description">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Kategori Seç</label>
+
+                            <select class="form-select-lg" asp-for="SubCategoryId" asp-items="@ViewBag.FullCategories" id="subcategory-select">
+                            </select>
+
+                        </div>
+                        <script>
+                            $(document).ready(function () {
+                                $('#subcategory-select').select2();
+                            });
+                        </script>
+
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Ürün Resim</label>
+
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Resim</th>
+                                    <th>Seç</th>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div id="imagesolo">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input class="form-control file-input-solo" type="file" id="imageUrl" placeholder="Resim URL'si Giriniz" name="imageUrl">
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Diğer Ürün Resimleri</label>
+
+                            <table class="table table-bordered form-image">
+                                <tr>
+                                    <th>Resim</th>
+                                    <th>Seç</th>
+                                    <th>Ekle/Sil</th>
+
+                                </tr>
+
+                            </table>
+                            <input class="btn btn-outline-primary add-more-image add-more-initial-image " id="add-more-initial" type="button" value="Ekle" />
+
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Fiyat:</label>
+                            <input type="text" class="form-control" id="price" placeholder="Fiyat Giriniz" name="Price">
+                        </div>
+                        <div class="mb-3">
+                            <label for="stock" class="form-label">Ürün Durumu</label>
+                            <select class="form-select" asp-for="Status">
+                                <option checked value="true">Aktif</option>
+                                <option value="false">Pasif</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="stock" class="form-label">Ürün Varyantı Var mı</label>
+                            <select class="form-select" asp-for="variousProduct" id="variousProduct" onchange="toggleDiv()">
+                                <option checked value="false">Hayır</option>
+                                <option value="true">Evet</option>
+                            </select>
+                        </div>
+
+                        <div id="various" class="box" style="display: none;">
+                            <table class="table table-bordered form-image">
+                                <tr>
+                                    <th>Renk Adı</th>
+                                    <th>Boyut/Beden/Diğer</th>
+                                    <th>Stok</th>
+                                </tr>
+                                <tr>
+                                    <input class="btn btn-outline-primary add-more-image add-more-initial-image " id="add-more-initial" type="button" value="Ekle" />
+                                </tr>
+                            </table>
+                        </div>
+
+
+                        <div class="mb-3" id="stock">
+                            <label for="stock" class="form-label">Stok:</label>
+                            <input type="text" class="form-control" id="stock" placeholder="Stok Miktarı Giriniz" name="stock" step="1" min="0">
+                        </div>
+                        <div class="mb-3">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="attribute" class="tabcontent">
+                    <label for="attribiute" class="form-label">Ürün Özellikleri</label>
+                    <div class="mb-3">
+                        <table class="table table-bordered form-input">
+                            <tr>
+                                <th>Tip</th>
+                                <th>Değer</th>
+                                <th>Ekle/Sil</th>
+
+                            </tr>
+                        </table>
+                        <input class="btn btn-outline-primary add-more add-more-initial " id="add-more-initial" type="button" value="Ekle" />
+                    </div>
+                </div>
+
+                <div id="details" class="tabcontent">
+                    <h3>Contact</h3>
+                    <p>Get in touch, or swing by for a cup of coffee.</p>
+                </div>
+
+                <div id="other" class="tabcontent">
+                    <h3>About</h3>
+                    <p>Who we are and what we do.</p>
+                </div>
+
+            </form>
+
+
+        </div>
+
+
+        <!--Prodcut Attribute özellikler Ekleme-->
+        <script>
+            var addButtonHTML, removeButtonHTML;
+            $(document).ready(function () {
+                var attributeRow = 0;  // Başlangıç satır sayısını 0 olarak ayarlıyoruz
+                addButtonHTML = '<input type="button" class="btn btn-primary add-more" value="+" />';
+                removeButtonHTML = '<input type="button" class="btn btn-danger remove-input" value="-" />';
+
+                function getInputRowHTML(rowNumber) {
+                    return '<tr>' +
+                        '<td> <input class="form-control" name="ProductAttributes[' + rowNumber + '].Type" type="text" /> </td>' +
+                        '<td> <input class="form-control" name="ProductAttributes[' + rowNumber + '].Value" type="text" /> </td>' +
+                        '<td>' + addButtonHTML + '</td>' +
+                        '</tr>';
+                }
+
+                $("body").on("click", ".add-more, .add-more-initial", function () {
+                    var newRowHTML = getInputRowHTML(attributeRow++);
+                    $(".form-input tbody").append(newRowHTML);
+                    showAddRemoveIcon();
+                });
+
+                $("body").on("click", ".remove-input", function () {
+                    $(this).closest("tr").remove();
+                    showAddRemoveIcon();
+                });
+
+                function showAddRemoveIcon() {
+                    $(".form-input tbody tr").find(".add-more").remove();
+                    $(".form-input tbody tr").find(".remove-input").remove();
+                    $(".form-input tbody tr:last").find("td:last").append(addButtonHTML);
+                    if ($(".form-input tbody tr").length > 1) {
+                        $(".form-input tbody tr:not(:last)").find("td:last").append(removeButtonHTML);
+                    }
+                }
+
+                // İlk satırı işaretleyin
+                showAddRemoveIcon();
+            });
+
+        </script>
+        <!--Çoklu Prodcut Resimler  Ekleme-->
+
+        <script>
+            $(document).ready(function () {
+                var addButtonHTML = '<input type="button" class="btn btn-primary add-more-image" value="+" />';
+                var removeButtonHTML = '<input type="button" class="btn btn-danger remove-input-image" value="-" />';
+                var attributeRow = 0;  // Başlangıç satır sayısını 0 olarak ayarlıyoruz
+
+                function getInputRowHTML(rowNumber) {
+                    return '<tr>' +
+                        '<td><div id="divImageMediaPreview_' + rowNumber + '"></div></td>' +
+                        '<td><input type="file" class="form-control file-input-image" name="ProductImages[' + rowNumber + '].ImageUrl" /></td>' +
+                        '<td>' + addButtonHTML + '</td>' +
+                        '</tr>';
+                }
+
+                $("body").on("click", ".add-more-image, .add-more-initial-image", function () {
+                    var newRowHTML = getInputRowHTML(attributeRow++);
+                    $(".form-image tbody").append(newRowHTML);
+                    showAddRemoveIcon();
+                });
+
+                $("body").on("click", ".remove-input-image", function () {
+                    $(this).closest("tr").remove();
+                    showAddRemoveIcon();
+                });
+
+                function showAddRemoveIcon() {
+                    $(".form-image tbody tr").each(function (index) {
+                        var isFirstRow = index === 0;
+                        $(this).find(".add-more-image").remove();
+                        $(this).find(".remove-input-image").remove();
+                        if (!isFirstRow) {
+                            $(this).find("td:last").append(removeButtonHTML);
+                        }
+                    });
+                    $(".form-image tbody tr:last").find("td:last").append(addButtonHTML);
+                }
+
+                // İlk satırı işaretleyin
+                showAddRemoveIcon();
+            });
+
+            $(document).on('change', '.file-input-image', function () {
+                var filesCount = $(this)[0].files.length;
+                var dvPreview = $(this).closest('tr').find('div[id^="divImageMediaPreview_"]');
+                dvPreview.empty(); // Önceki önizlemeleri temizle
+
+                if (filesCount > 0 && typeof FileReader !== "undefined") {
+                    $.each(this.files, function (index, file) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var img = $("<img />", {
+                                src: e.target.result,
+                                style: "width: 150px; height: 100px; padding: 10px;"
+                            });
+                            dvPreview.append(img);
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                } else {
+                    dvPreview.html("<p>No images selected</p>");
+                }
+            });
+        </script>
+
+        <!--Tek Product Resim -->
+        <script>
+            $(document).ready(function () {
+                $(document).on('change', '.file-input-solo', function () {
+                    var files = $(this)[0].files;
+                    var dvPreview = $("#imagesolo");
+                    dvPreview.empty(); // Önceki önizlemeleri temizle
+
+                    if (files.length > 0 && typeof FileReader !== "undefined") {
+                        $.each(files, function (index, file) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                var img = $("<img />");
+                                img.attr("style", "width: 150px; height: 100px; padding: 10px;");
+                                img.attr("src", e.target.result);
+                                dvPreview.append(img);
+                            };
+                            reader.readAsDataURL(file);
+                        });
+                    } else {
+                        dvPreview.html("<p>No images selected</p>");
+                    }
+                });
+            });
+        </script>,
+
+        <!-- Varyant Visable -->
+        <script>
+            function toggleDiv() {
+                let value1 = document.getElementById("variousProduct").value;
+                let div1 = document.getElementById("various");
+                let div2 = document.getElementById("stock");
+
+
+                if (value1 === "true") {
+                    div1.style.display = "block";  // Varyant varsa div'i görünür yap
+                    div2.style.display = "none";   // Varyant yoksa div'i gizle
+
+
+                } else {
+                    div1.style.display = "none";   // Varyant yoksa div'i gizle
+                    div2.style.display = "block";  // Varyant varsa div'i görünür yap
+
+                }
+            }
+        </script>
+    </div>
+</div>

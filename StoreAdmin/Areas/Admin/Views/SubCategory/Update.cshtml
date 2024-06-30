@@ -1,0 +1,41 @@
+﻿ @model SubCategory
+
+<div class="row d-flex justify-content-center align-items-center">
+    <partial name="_SaveCloseButtonGroup"></partial>
+    <script>
+        function submitForm() {
+            document.getElementById("subCategoryFormUpdate").submit();
+        }
+    </script>
+    <div class="col-lg-12 col-md-12 col-sm-10">
+        <div class="p-3 border bg-light">
+
+            <form asp-controller="SubCategory" id="subCategoryFormUpdate" asp-action="Update">
+                <div class="mb-3">
+                    @Html.HiddenFor(x => x.Id)
+                    <label for="Kategori" class="form-label"> Kategori</label>
+                    <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.Category
+">
+                    </select>
+                    <label for="AltKategori" class="form-label">Alt Kategori Adı</label>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+
+                    <label for="Kategori" class="form-label"> Kategori Açıklama</label>
+                    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+                    <label for="Kategori" class="form-label"> Kategori Başlık</label>
+                    @Html.TextBoxFor(x => x.MetaTitle, new { @class = "form-control" })
+                    <label for="Kategori" class="form-label"> Kategori Meta Açıklama</label>
+                    @Html.TextBoxFor(x => x.MetaDescription, new { @class = "form-control" })
+                    <label for="Kategori" class="form-label"> Kategori Durumu</label>
+                    <select class="form-select" asp-for="Status">
+                        <option value="true">Aktif</option>
+                        <option value="false">Pasif</option>
+                    </select>
+
+                </div>
+           
+            </form>
+
+        </div>
+    </div>
+</div>

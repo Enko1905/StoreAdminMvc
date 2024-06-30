@@ -20,25 +20,25 @@ namespace Service
 
         public async Task<bool> CreateOne(Products entity)
         {
-            var response = await _httpClient.PostAsJsonAsync("Product",entity);
+            var response = await _httpClient.PostAsJsonAsync("Products",entity);
             return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteOne(int id)
         {
-            var response = await _httpClient.DeleteAsync($"Product/{id}");
+            var response = await _httpClient.DeleteAsync($"Products/{id}");
             return response.IsSuccessStatusCode;
         }
 
         public async Task<List<Products>> GetAll()
         {
-            var respone = await _httpClient.GetFromJsonAsync<List<Products>>("Product");
+            var respone = await _httpClient.GetFromJsonAsync<List<Products>>("Products");
             return respone.ToList();    
         }
 
         public async Task<Products> GetOne(int id)
         {
-            var respone = await _httpClient.GetFromJsonAsync<Products>($"Product/{id}");
+            var respone = await _httpClient.GetFromJsonAsync<Products>($"Products/{id}");
             return respone;
         }
 

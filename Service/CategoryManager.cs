@@ -18,7 +18,7 @@ namespace Service
         {
             _httpClient = httpClient;
         }
-        public async Task<bool> CreateOne(Categories entity)
+        public async Task<bool> CreateOne(Category entity)
         {
             var response = await _httpClient.PostAsJsonAsync("Category", entity);
             return response.IsSuccessStatusCode;
@@ -32,25 +32,25 @@ namespace Service
 
         [Obsolete("GetAllById")]
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public async Task<List<Categories>> GetAll()
+        public async Task<List<Category>> GetAll()
         {
             throw new NotImplementedException();
 
         }
 
-        public async Task<List<Categories>> GetAllById(int id)
+        public async Task<List<Category>> GetAllById(int id)
         {
-            var response = await _httpClient.GetFromJsonAsync<List<Categories>>($"Category/{id}");
+            var response = await _httpClient.GetFromJsonAsync<List<Category>>($"Category/{id}");
             return response.ToList();
         }
 
-        public async Task<Categories> GetOne(int id)
+        public async Task<Category> GetOne(int id)
         {
-            var response = await _httpClient.GetFromJsonAsync<Categories>($"Category/GetOne/{id}");
+            var response = await _httpClient.GetFromJsonAsync<Category>($"Category/OneCategory/{id}");
             return response;
         }
 
-        public async Task<bool> UpdateOne(int id, Categories entity)
+        public async Task<bool> UpdateOne(int id, Category entity)
         {
             var response = await _httpClient.PutAsJsonAsync($"Category/{id}", entity);
             return response.IsSuccessStatusCode;

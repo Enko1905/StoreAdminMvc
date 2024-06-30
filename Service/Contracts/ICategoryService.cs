@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Service.Contracts
 {
-    public interface ICategoryService:IServiceBase<Categories>
+    public interface ICategoryService:IServiceBase<Category>
     {
-       public Task<List<Categories>> GetAllById(int id);
+       public Task<List<Category>> GetAllById(int id);
 
     }
 }

@@ -43,13 +43,14 @@ namespace Service
 
         public async Task<SubCategory> GetOne(int id)
         {
-            var response = await _httpClient.GetFromJsonAsync<SubCategory>($"SubCategory/GetOne/{id}");
+            var response = await _httpClient.GetFromJsonAsync<SubCategory>($"SubCategory/OneSubCategory/{id}");
             return response;
         }
 
-        public Task<bool> UpdateOne(int id, SubCategory entity)
+        public async Task<bool> UpdateOne(int id, SubCategory entity)
         {
-            throw new NotImplementedException();
+            var reponse = await _httpClient.PutAsJsonAsync($"SubCategory/{id}",entity);
+            return reponse.IsSuccessStatusCode;
         }
     }
 }

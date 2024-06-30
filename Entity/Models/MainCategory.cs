@@ -1,19 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Models
 {
+    // Ana Kategori tablosu
     public class MainCategory
     {
         [Key]
-        public int MainCategoryId { get; set; }
+        public int Id { get; set; }
 
+        [Required, MaxLength(50)]
         public string Name { get; set; }
-        public ICollection<Categories> Categories { get; set; }
+
+        [Required, MaxLength(500)]
+        public string Description { get; set; }
+
+        [Required, MaxLength(300)]
+        public string MetaTitle { get; set; }
+
+        [Required, MaxLength(300)]
+        public string MetaDescription { get; set; }
+        public bool MainCategoryStasus { get; set; } = true;
+        public ICollection<Category> Category { get; set; }
     }
 
 }

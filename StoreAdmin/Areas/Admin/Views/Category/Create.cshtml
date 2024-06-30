@@ -1,0 +1,46 @@
+﻿@model Category
+
+<div class="row d-flex justify-content-center align-items-center">
+    <partial name="_SaveCloseButtonGroup"></partial>
+    <script>
+        function submitForm() {
+            document.getElementById("categoryFormCreate").submit();
+        }
+    </script>
+    <div class="col-lg-12 col-md-12 col-sm-10">
+        <div class="p-3 border bg-light">
+
+            <form asp-controller="Category" asp-area="admin" id="categoryFormCreate" asp-action="Create">
+                <div class="mb-3">
+                    <label for="Kategori" class="form-label">Ana Kategori</label>
+                    <select class="form-control" asp-for="MainCategoryId" asp-items="@ViewBag.MainCategory">
+                    </select>
+                    <label for="Kategori" class="form-label">Kategori Adı</label>
+                    <input type="text" name="name" class="form-control" placeholder="'Kategori Adı'" id="Kategori">
+                    <div class="mb-3">
+                        <label for="Kategori" class="form-label">Açıklama</label>
+                        <input type="text" name="Description" class="form-control" placeholder="'Açıklama'" id="Kategori">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Kategori" class="form-label">Meta Başlığı</label>
+                        <input type="text" name="MetaTitle" class="form-control" placeholder="'Meta Başlığı'" id="Kategori">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Kategori" class="form-label">Meta Açıklama</label>
+                        <input type="text" name="MetaDescription" class="form-control" placeholder="'Meta Açıklama '" id="Kategori">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Kategori" class="form-label">Kategori Durumu</label>
+                        <select class="form-select" asp-for="Status">
+                            <option value="true">Aktif</option>
+                            <option value="false">Pasif</option>
+                        </select>
+                    </div>
+                </div>
+            
+              
+            </form>
+
+        </div>
+    </div>
+</div>

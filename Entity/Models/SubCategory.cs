@@ -1,26 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.Models
 {
+    // Alt Kategori tablosu
     public class SubCategory
     {
         [Key]
-        public int SubCategoryId { get; set; }
+        public int Id { get; set; }
 
-        [Required]
-        [MaxLength(100)]
+        [Required, MaxLength(50)]
         public string Name { get; set; }
 
-        [ForeignKey("Categories")]
+        [ForeignKey("Category")]
         public int CategoryId { get; set; }
-        public Categories Categories { get; set; }
+        public Category Category { get; set; }
 
-        ICollection<Products> products { get; set; }
+        [Required, MaxLength(300)]
+        public string Description { get; set; }
+
+        [Required, MaxLength(50)]
+        public string MetaTitle { get; set; }
+
+        [Required, MaxLength(300)]
+        public string MetaDescription { get; set; }
+
+        [Required]
+        public bool Status { get; set; } = true;
+
+        public ICollection<Products> Products { get; set; }
     }
+
 }

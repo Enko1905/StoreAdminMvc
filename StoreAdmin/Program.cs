@@ -4,6 +4,7 @@ using StoreAdmin.Extensions;
 using Microsoft.AspNetCore.Authentication.Certificate;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Builder;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,6 +12,8 @@ builder.Services.AddControllersWithViews();
 
 
 //builder.Services.AddScoped<IMainCategoryService,MainCategoryManager>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+builder.Services.AddScoped<ISubCategoryService, SubCategoryManager>();
 builder.Services.AddScoped<IMainCategoryService, MainCategoryManager>();
 builder.Services.AddScoped<IServiceManager, ServiceManager>();
 
@@ -27,7 +30,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-   app.UseHsts();
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -37,8 +40,15 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+app.UseEndpoints(endpoint =>
+{
+    endpoint.MapAreaControllerRoute(
+        name: "Admin",
+        areaName: "Admin",
+        pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}");
+    endpoint.MapControllerRoute(
+            name: "Anasayfa",
+            pattern: "{area=Admin}/{controller=Dashboard}/{action=Index}/{id?}");
+});
 
 app.Run();

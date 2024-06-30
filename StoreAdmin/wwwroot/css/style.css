@@ -1,0 +1,50 @@
+﻿* {
+    box-sizing: border-box
+}
+
+/* Set height of body and the document to 100% */
+
+
+/* Style tab links */
+.tablink {
+    color:#f8f9fa;
+    background-color: #043f5f;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+    .tablink:hover {
+        background-color: #043f5f;
+    }
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+}
+Label{
+
+    color:black !important;
+}
+#Urun {
+    background-color: #f8f9fa;
+}
+
+#attribute {
+    background-color: #f8f9fa;
+}
+
+#details {
+    background-color: #f8f9fa;
+}
+
+#other {
+    background-color: #f8f9fa;
+}

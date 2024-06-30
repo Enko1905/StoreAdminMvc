@@ -11,30 +11,50 @@ namespace Entities.Models
 {
     public class Products
     {
-
         [Key]
         public int Id { get; set; }
-        // [Required(ErrorMessage ="Ürün Adı Boş")]
-        //[MaxLength(250, ErrorMessage = "Ürün adı en fazla 100 karakter olabilir.")]
 
-        public string ProductName { get; set; } = string.Empty;
-        public string? ImagesUrl { get; set; } = string.Empty;
-        //[Required(ErrorMessage = "CategoryId Boş olamaz")]
-        [ForeignKey("SubCategory")] // Categories ile olan ilişkiyi belirtmek için
-        public int SubCategoryId { get; set; } // Zorunlu CategoryId
+        [Required, MaxLength(50)]
+        public string Name { get; set; }
+
+        [Required]
+        public decimal Price { get; set; }
+
+        public uint? Stock { get; set; }
+
+
+
+        [Required, MaxLength(1500)]
+        public String Description { get; set; }
+
+        [ForeignKey("SubCategory")]
+        [Required]
+        public int SubCategoryId { get; set; }
         public SubCategory SubCategory { get; set; }
+        [Required, MaxLength(500)]
+        public string ImageUrl { get; set; }
+        [MaxLength(150)]
+        public string? SKU { get; set; }
 
-        public List<ProductAttribute> ProductAttributes { get; set; }
-        public String Description { get; set; } = string.Empty;
-        public DateTime DateTime { get; set; }
+        public bool Status { get; set; } = true;
+        public bool variousProduct { get; set; } = false;
+        public bool Featured { get; set; } = false;
 
-        public Decimal Price { get; set; }
-        public int Stok { get; set; }
-        public Products()
-        {
-            DateTime = DateTime.Now;
-        }
+        public string? Tags { get; set; }
 
+        public decimal? Weight { get; set; }
+        public decimal? Width { get; set; }
+        public decimal? Height { get; set; }
 
+        public DateTime? CreateDate { get; set; } = DateTime.UtcNow;
+        public DateTime? UpdateDate { get; set; }
+
+        [ForeignKey("Category")]
+        public int? CategoryId { get; set; }
+        public Category Category { get; set; }
+        public ICollection<ProductImage> ProductImages { get; set; }
+        public ICollection<ProductAttribute> ProductAttributes { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public ICollection<ProductVariants> productVariants { get; set; }
     }
 }
