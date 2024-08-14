@@ -6,10 +6,10 @@ namespace Entities.Models
     public class City
     {
         [Key]
-        public int CityId { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(100)]
-        public string CityName { get; set; }
+        public string Name { get; set; }
         public string? PlateCode { get; set; }
         public ICollection<CityDistricts> CityDistricts { get; set; }
     }

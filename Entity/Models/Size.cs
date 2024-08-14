@@ -4,10 +4,10 @@ namespace Entities.Models
 {
     public class Size
     {
-        public int SizeId { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(50)]
-        public string SizeName { get; set; }
+        public string Name { get; set; }
         public ICollection<ProductVariants> ProductVariants { get; set; }
     }
 

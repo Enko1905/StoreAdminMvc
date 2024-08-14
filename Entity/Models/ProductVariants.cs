@@ -6,12 +6,13 @@ namespace Entities.Models
     public class ProductVariants
     {
         [Key]
-        public int VariantId { get; set; }
+        public int Id { get; set; }
 
 
         [ForeignKey("Products")]
         public int ProductId { get; set; }
-        public Products Products { get; set; }
+        public string? SKU { get; set; }
+        public Products? Products { get; set; }
 
         [ForeignKey("Color")]
         public int? ColorId { get; set; }
@@ -20,8 +21,9 @@ namespace Entities.Models
         [ForeignKey("Size")]
         public int? SizeId { get; set; }
         public Size? Size { get; set; }
+        
+        [Required]
         public uint Stock { get; set;}  
-
 
     }
 

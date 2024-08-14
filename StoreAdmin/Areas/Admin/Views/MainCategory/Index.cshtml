@@ -26,7 +26,7 @@
                         <td>@MCate.Name</td>
                         <td>
                          
-                            @((bool)MCate.MainCategoryStasus ? "Aktif": "Pasif")
+                            @((bool)MCate.Status ? "Aktif": "Pasif")
                             </td>
 
                         <td><a asp-controller="Category" asp-action="Index" asp-route-id="@MCate.Id">Kategorilere Git</a><sub>(99)</sub></td>

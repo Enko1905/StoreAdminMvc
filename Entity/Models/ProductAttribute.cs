@@ -17,7 +17,7 @@ namespace Entities.Models
 
         [ForeignKey("Product")]
         public int ProductId { get; set; }
-        public Products Product { get; set; }
+        public Products? Product { get; set; }
 
     }
 

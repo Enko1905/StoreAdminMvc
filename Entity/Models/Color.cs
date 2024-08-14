@@ -4,10 +4,10 @@ namespace Entities.Models
 {
     public class Color
     {
-        public int ColorId { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(50)]
-        public string ColorName { get; set; }
+        public string Name { get; set; }
         [MaxLength(20)]
         public string? ColorCode { get; set; }
         public ICollection<ProductVariants> ProductVariants { get; set; }

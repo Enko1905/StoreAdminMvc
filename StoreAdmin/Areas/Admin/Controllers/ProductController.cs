@@ -67,13 +67,19 @@ namespace StoreAdmin.Areas.Admin.Controllers
             ViewBag.FullCategories = await GetCategoriesSelectList();
             return View();
         }
+        public async Task<IActionResult> Createv2()
+        {
+
+            ViewBag.FullCategories = await GetCategoriesSelectList();
+            return View();
+        }
         [HttpPost]
         public async Task<IActionResult> Create(Products product)
         {
             var GetcategoryId = await _serviceManager.SubCategoryService.GetOne(product.SubCategoryId);
 
             product.CategoryId = GetcategoryId.CategoryId;
-
+            product.CreateDate = DateTime.UtcNow;
 
             var sonuc = await _serviceManager.ProductService.CreateOne(product);
 

@@ -7,12 +7,12 @@ namespace Entities.Models
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("Product")]
+        [ForeignKey("Products")]
         public int ProductId { get; set; }
         public Products Products { get; set; }
 
         [MaxLength(100)]
-        public string CategoryName { get; set; }
+        public string Name { get; set; }
     }
 
 }

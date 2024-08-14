@@ -28,7 +28,8 @@ namespace Entities.Models
         [Required]
         public bool Status { get; set; } = true;
 
-        public ICollection<Products> Products { get; set; }
+        public ICollection<Products>? Products { get; set; }
+
     }
 
 }

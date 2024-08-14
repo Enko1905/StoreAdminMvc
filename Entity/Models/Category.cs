@@ -8,6 +8,7 @@ namespace Entities.Models
     {
         [Key]
         public int Id { get; set; }
+
         [ForeignKey("MainCategory")]
         public int MainCategoryId { get; set; }
         MainCategory MainCategory { get; set; }

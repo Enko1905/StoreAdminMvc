@@ -14,31 +14,32 @@ namespace Entities.Models
         [Key]
         public int Id { get; set; }
 
-        [Required, MaxLength(50)]
+        [Required,MaxLength(50)]
         public string Name { get; set; }
 
         [Required]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
         public uint? Stock { get; set; }
 
+    
 
-
-        [Required, MaxLength(1500)]
+        [Required,MaxLength(1500)]
         public String Description { get; set; }
 
         [ForeignKey("SubCategory")]
         [Required]
         public int SubCategoryId { get; set; }
-        public SubCategory SubCategory { get; set; }
-        [Required, MaxLength(500)]
+        public SubCategory? SubCategory { get; set; }
+
+        [Required,MaxLength(500)]
         public string ImageUrl { get; set; }
         [MaxLength(150)]
         public string? SKU { get; set; }
 
-        public bool Status { get; set; } = true;
-        public bool variousProduct { get; set; } = false;
-        public bool Featured { get; set; } = false;
+        public bool Status { get; set; } 
+        public bool variousProduct { get; set; }
+        public bool Featured { get; set; }
 
         public string? Tags { get; set; }
 
@@ -46,15 +47,16 @@ namespace Entities.Models
         public decimal? Width { get; set; }
         public decimal? Height { get; set; }
 
-        public DateTime? CreateDate { get; set; } = DateTime.UtcNow;
+        public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
 
         [ForeignKey("Category")]
         public int? CategoryId { get; set; }
-        public Category Category { get; set; }
-        public ICollection<ProductImage> ProductImages { get; set; }
-        public ICollection<ProductAttribute> ProductAttributes { get; set; }
-        public ICollection<OrderDetail> OrderDetails { get; set; }
-        public ICollection<ProductVariants> productVariants { get; set; }
+         
+        public Category? Category { get; set; }
+        public ICollection<ProductImage>? ProductImages { get; set; }
+        public ICollection<ProductAttribute>? ProductAttributes { get; set; }
+        public ICollection<OrderDetail>? OrderDetails { get; set; }
+        public ICollection<ProductVariants>? productVariants { get; set; }
     }
 }

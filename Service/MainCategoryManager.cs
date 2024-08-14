@@ -13,7 +13,7 @@ namespace Service
     public class MainCategoryManager : IMainCategoryService
     {
         private readonly HttpClient _httpClient;
-
+        string baseUrl = "mainCategory";
         public MainCategoryManager(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -39,9 +39,10 @@ namespace Service
 
         public async Task<List<MainCategory>> GetFullAll()
         {
-            var response = await _httpClient.GetFromJsonAsync<List<MainCategory>>("mainCategory/GetAllSubMainCatregory");
-            return response.Where(x => x.MainCategoryStasus == true).ToList();
+            var response = await _httpClient.GetFromJsonAsync<List<MainCategory>>("mainCategory/GetAllSubMainCategory");
+            return response.ToList();
         }
+
 
         public async Task<MainCategory> GetOne(int id)
         {

@@ -7,10 +7,10 @@ namespace Entities.Models
     public class CityDistricts
     {
         [Key]
-        public int CityDistrictsId { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(100)]
-        public string DistrictsName { get; set; }
+        public string Name { get; set; }
         [ForeignKey("City")]
         public int CityId { get; set; }
         public City City { get; set; }

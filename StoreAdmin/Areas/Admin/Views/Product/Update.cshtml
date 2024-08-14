@@ -63,14 +63,7 @@
                     var attributeIndex = 0;
 
                     $('#addAttribute').click(function () {
-                        var newAttributeHtml = `
-                                                                                                            <div class="form-group" id="attribute-${attributeIndex}">
-                                                                                                                <label for="attributeType-${attributeIndex}" class="form-label">Tip</label>
-                                                                                                                 <input name="ProductAttributes[${attributeIndex}].Type" class="form-control" id="attributeType-${attributeIndex}" placeholder="Özellik Tipi Giriniz" />
-                                                                                                                <label for="attributeValue-${attributeIndex}" class="form-label">Değer</label>
-                                                                                                                  <input name="ProductAttributes[${attributeIndex}].Value" class="form-control" id="attributeValue-${attributeIndex}" placeholder="Özellik Değeri Giriniz" />
-                                                                                                                <button type="button" class="btn btn-danger mt-2 removeAttribute"><i class="bi bi-dash"></i></button>
-                                                                                                            </div>`;
+                        var newAttributeHtml = `                                                                         </div>`;
                         $('#attributesContainer').append(newAttributeHtml);
                         attributeIndex++;
                     });

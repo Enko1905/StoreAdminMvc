@@ -20,12 +20,12 @@
                 <div id="Urun" class="tabcontent">
                     <div class="form-group">
                         <div class="mb-3 mt-3">
-                            <label for="sku" class="form-label">Ürün SKU</label>
-                            <input type="text" class="form-control" id="sku" placeholder="Ürün SKU Kodu Zorunlu Değil" name="sku">
+                            <label for="productsku" class="form-label">Ürün SKU</label>
+                            <input type="text" class="form-control" id="productsku" placeholder="Ürün SKU Kodu Zorunlu Değil" name="SKU">
                         </div>
                         <div class="mb-3 mt-3">
-                            <label for="name" class="form-label">Ürün Adı:</label>
-                            <input type="text" class="form-control" id="name" placeholder="Ürün Adı Giriniz" name="name">
+                            <label for="productName" class="form-label">Ürün Adı:</label>
+                            <input type="text" class="form-control" id="productName" placeholder="Ürün Adı Giriniz" name="productName">
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Ürün Açıklaması:</label>
@@ -40,8 +40,7 @@
                         </div>
                         <script>
                             $(document).ready(function () {
-                                $('#subcategory-select').select2(
-                                    { allowClear: true });
+                                $('#subcategory-select').select2();
                             });
                         </script>
 
@@ -71,25 +70,136 @@
                         <div class="mb-3">
                             <label for="description" class="form-label">Diğer Ürün Resimleri</label>
 
-                            <table class="table table-bordered form-image">
-                                <tr>
-                                    <th>Resim</th>
-                                    <th>Seç</th>
-                                    <th>Alt Bilgi(Zorunlu Değil)</th>
-                                    <th>Ekle/Sil</th>
 
-                                </tr>
-                            </table>
-                            <input class="btn btn-outline-primary add-more-image add-more-initial-image " id="add-more-initial" type="button" value="Ekle" />
+                            <form id="frm" method="post" class="needs-validation" novalidate="">
+
+                                <!--Image Upload-->
+                                <div class="row mt-3 mb-2">
+
+                                    <div class="col-12 pr-0 text-left">
+                                        <label for="Images" class="col-form-label text-nowrap"><strong>Images loader</strong></label>
+                                    </div>
+                                </div>
+
+                                <!--Image container -->
+                                <div class="row"
+                                     data-type="imagesloader"
+                                     data-errorformat="Accepted file formats"
+                                     data-errorsize="Maximum size accepted"
+                                     data-errorduplicate="File already loaded"
+                                     data-errormaxfiles="Maximum number of images you can upload"
+                                     data-errorminfiles="Minimum number of images to upload"
+                                     data-modifyimagetext="Resmi Düzenle">
+
+                                    <!-- Progress bar -->
+                                    <div class="col-12 order-1 mt-2">
+                                        <div data-type="progress" class="progress" style="height: 25px; display:none;">
+                                            <div data-type="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 100%;">Load in progress...</div>
+                                        </div>
+                                    </div>
+                                    <!-- Model -->
+                                    <div data-type="image-model" class="col-4 pl-2 pr-2 pt-2" style="max-width:200px;">
+
+                                        <div class="ratio-box text-center" data-type="image-ratio-box">
+                                            <img data-type="noimage" class="btn btn-light ratio-img img-fluid p-2 image border dashed rounded" src="~/img/photo-camera-gray.svg" style="cursor:pointer;">
+                                            <div data-type="loading" class="img-loading" style="color:#342cc0; display:none;">
+                                                <span class="fa fa-2x fa-spin fa-spinner"></span>
+                                            </div>
+                                            <img data-type="preview" class="btn btn-light ratio-img img-fluid p-2 image border dashed rounded" src="" style="display: none; cursor: default;">
+                                            <span class="badge badge-pill badge-success p-2 w-50 main-tag" style="display:none;">Main</span>
+                                        </div>
+
+                                        <!-- Buttons -->
+                                        <div data-type="image-buttons" class="row justify-content-center mt-2">
+                                            <button data-type="add" class="btn btn-outline-success" type="button"><span class="fa fa-camera mr-2"></span>Add</button>
+                                            <button data-type="btn-modify" type="button" class="btn btn-outline-success m-0" data-toggle="popover" data-placement="right" style="display:none;">
+                                                <span class="fa fa-pencil-alt mr-2"></span>Modify
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Popover operations -->
+                                    <div data-type="popover-model" style="display:none">
+                                        <div data-type="popover" class="ml-3 mr-3" style="min-width:150px;">
+                                            <div class="row">
+                                                <div class="col p-0">
+                                                    <button data-operation="main" class="btn btn-block btn-success btn-sm rounded-pill" type="button"><span class="fa fa-angle-double-up mr-2"></span>Main</button>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-6 p-0 pr-1">
+                                                    <button data-operation="left" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button"><span class="fa fa-angle-left mr-2"></span>Left</button>
+                                                </div>
+                                                <div class="col-6 p-0 pl-1">
+                                                    <button data-operation="right" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Right<span class="fa fa-angle-right ml-2"></span></button>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <div class="col-6 p-0 pr-1">
+                                                    <button data-operation="rotateanticlockwise" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button"><span class="fas fa-undo-alt mr-2"></span>Rotate</button>
+                                                </div>
+                                                <div class="col-6 p-0 pl-1">
+                                                    <button data-operation="rotateclockwise" class="btn btn-block btn-outline-success btn-sm rounded-pill" type="button">Rotate<span class="fas fa-redo-alt ml-2"></span></button>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2">
+                                                <button data-operation="remove" class="btn btn-outline-danger btn-sm btn-block" type="button"><span class="fa fa-times mr-2"></span>Remove</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="input-group">
+                                        <!--Hidden file input for images-->
+                                        <input id="files" type="file" name="files[]" data-button="" multiple="" accept="image/jpeg, image/png, image/gif," style="display:none;">
+                                    </div>
+                                </div>
+
+                            </form>
+                            <!-- Custom JavaScript -->
+                            <script>
+                                $(document).ready(function () {
+
+                                    //Image loader var to use when you need a function from object
+                                    var auctionImages = null;
+
+                                    // Create image loader plugin
+                                    var imagesloader = $('[data-type=imagesloader]').imagesloader({
+                                        maxFiles: 4                          
+                                        , minSelect: 1                       
+                                        , imagesToLoad: auctionImages        
+                                    });
+
+                                    //Form
+                                    $frm = $('#frm');
+
+                                    // Form submit
+                                    $frm.submit(function (e) {
+
+                                        var $form = $(this);
+
+                                        var files = imagesloader.data('format.imagesloader').AttachmentArray;
+
+                                        var il = imagesloader.data('format.imagesloader');
+
+                                        if (il.CheckValidity())
+                                            alert('Upload ' + files.length + ' files');
+
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                    });
+
+                                });
+
+                            </script>
                         </div>
 
 
                         <div class="mb-3">
-                            <label for="price" class="form-label">Fiyat</label>
-                            <div class="input-group ">
-                                <input type="text" class="form-control" id="price" placeholder="Fiyat Giriniz" name="Price">
-                                <span class="input-group-text" id="basic-addon2">₺</span>
-                            </div>
+                            <label for="price" class="form-label">Fiyat:</label>
+                            <input type="text" class="form-control" id="price" placeholder="Fiyat Giriniz" name="Price">
                         </div>
                         <div class="mb-3">
                             <label for="stock" class="form-label">Ürün Durumu</label>
@@ -99,14 +209,6 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="stock" class="form-label">Öne Çıkan Ürün Olarak Göster</label>
-                            <select class="form-select" asp-for="Featured">
-                                <option checked value="false">Hayır</option>
-                                <option value="true">Evet</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
                             <label for="stock" class="form-label">Ürün Varyantı Var mı</label>
                             <select class="form-select" asp-for="variousProduct" id="variousProduct" onchange="toggleDiv()">
                                 <option checked value="false">Hayır</option>
@@ -114,20 +216,15 @@
                             </select>
                         </div>
 
-
                         <div id="various" class="box" style="display: none;">
-                            <table class="table table-bordered form-variant-product">
+                            <table class="table table-bordered form-image">
                                 <tr>
                                     <th>Renk Adı</th>
                                     <th>Boyut/Beden/Diğer</th>
                                     <th>Stok</th>
                                 </tr>
                                 <tr>
-                                    <div class="btn-group">
-                                        <input class="btn btn-outline-primary add-more-variant add-more-initial-variant " id="add-more-initial" type="button" value="Ekle" />
-                                        <input class="btn btn-danger add-more-variant add-more-initial-variant " id="add-more-initial" type="button" value="Sil" />
-
-                                    </div>
+                                    <input class="btn btn-outline-primary add-more-image add-more-initial-image " id="add-more-initial" type="button" value="Ekle" />
                                 </tr>
                             </table>
                         </div>
@@ -159,65 +256,13 @@
                 </div>
 
                 <div id="details" class="tabcontent">
-                    <div class="form-group">
-                        <label for="Tags" class="form-label">Ürün Etiketleri</label>
-                        <input type="text" class="form-control" placeholder="Ürün Etiketleri Giriniz" name="Tags" />
-                    </div>
-                    <script type="text/javascript">
-
-                        $('input[name="Tags"]').amsifySuggestags();
-                        $('input[name="color"]').amsifySuggestags({
-                            suggestions: ['Black', 'White', 'Red', 'Blue', 'Green', 'Orange'],
-                            showAllSuggestions: true
-
-                        });
-
-                        $('input[name="toAjax"]').amsifySuggestags({
-                            suggestionsAction: {
-                                url: 'jquery-plugins/suggestags/examples/suggestions.php',
-                                beforeSend: function () {
-                                    console.info('beforeSend');
-                                },
-                                success: function (data) {
-                                    console.info(data);
-                                },
-                                error: function () {
-                                    console.info('error');
-                                },
-                                complete: function (data) {
-                                    console.info('complete');
-                                }
-                            }
-                        });
-
-
-
-
-                    </script>
-
+                    <h3>Contact</h3>
+                    <p>Get in touch, or swing by for a cup of coffee.</p>
                 </div>
 
                 <div id="other" class="tabcontent">
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-
-                            <span class="input-group-text" id="basic-addon2">Genişlik(Width)</span>
-                            <input type="number" step="0.01" min="0" class="form-control" id="Width" placeholder="Genişlik" name="Width">
-                            <span class="input-group-text" id="basic-addon2">Cm</span>
-
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon2">Yükseklik(Height)</span>
-                            <input type="number" step="0.01" min="0" class="form-control" id="Height" placeholder="Yükseklik" name="Height">
-                            <span class="input-group-text" id="basic-addon2">Cm</span>
-
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon2">Ağırlık(Weight)</span>
-                            <input type="number" step="0.01" min="0" class="form-control" id="Weight" placeholder="Ağırlık" name="Weight">
-                            <span class="input-group-text" id="basic-addon2">Kg</span>
-                        </div>
-                    </div>
+                    <h3>About</h3>
+                    <p>Who we are and what we do.</p>
                 </div>
 
             </form>
@@ -254,24 +299,13 @@
                 });
 
                 function showAddRemoveIcon() {
-                    var rows = $(".form-input tbody tr");
-                    rows.find(".add-more").remove();
-                    rows.find(".remove-input").remove();
-
-                    // Eğer birden fazla satır varsa, tüm satırlara silme butonunu ekleyin
-                    if (rows.length > 1) {
-                        rows.find("td:last").append(removeButtonHTML);
-                    }
-
-                    // Son satıra ekleme butonunu ekleyin
-                    rows.last().find("td:last").append(addButtonHTML);
-
-                    // Eğer sadece bir satır kaldıysa, o satırda sadece ekleme butonunun kalmasını sağla
-                    if (rows.length === 1) {
-                        rows.find(".remove-input").remove(); // Silme butonunu kaldır
+                    $(".form-input tbody tr").find(".add-more").remove();
+                    $(".form-input tbody tr").find(".remove-input").remove();
+                    $(".form-input tbody tr:last").find("td:last").append(addButtonHTML);
+                    if ($(".form-input tbody tr").length > 1) {
+                        $(".form-input tbody tr:not(:last)").find("td:last").append(removeButtonHTML);
                     }
                 }
-
 
                 // İlk satırı işaretleyin
                 showAddRemoveIcon();
@@ -290,7 +324,6 @@
                     return '<tr>' +
                         '<td><div id="divImageMediaPreview_' + rowNumber + '"></div></td>' +
                         '<td><input type="file" class="form-control file-input-image" name="ProductImages[' + rowNumber + '].ImageUrl" /></td>' +
-                        '<td><input type="text" class="form-control" placeholder="Yeşil Tişört S Beden Ön Görünüm" name="ProductImages[' + rowNumber + '].Alt" /></td>' +
                         '<td>' + addButtonHTML + '</td>' +
                         '</tr>';
                 }
@@ -307,22 +340,15 @@
                 });
 
                 function showAddRemoveIcon() {
-                    var rows = $(".form-image tbody tr");
-                    rows.find(".add-more-image").remove();
-                    rows.find(".remove-input-image").remove();
-
-                    // Eğer birden fazla satır varsa, tüm satırlara silme butonunu ekleyin
-                    if (rows.length > 1) {
-                        rows.find("td:last").append(removeButtonHTML);
-                    }
-
-                    // Son satıra ekleme butonunu ekleyin
-                    rows.last().find("td:last").append(addButtonHTML);
-
-                    // Eğer sadece bir satır kaldıysa, o satırda sadece ekleme butonunun kalmasını sağla
-                    if (rows.length === 1) {
-                        rows.find(".remove-input-image").remove(); // Silme butonunu kaldır
-                    }
+                    $(".form-image tbody tr").each(function (index) {
+                        var isFirstRow = index === 0;
+                        $(this).find(".add-more-image").remove();
+                        $(this).find(".remove-input-image").remove();
+                        if (!isFirstRow) {
+                            $(this).find("td:last").append(removeButtonHTML);
+                        }
+                    });
+                    $(".form-image tbody tr:last").find("td:last").append(addButtonHTML);
                 }
 
                 // İlk satırı işaretleyin
@@ -376,7 +402,7 @@
                     }
                 });
             });
-        </script>
+        </script>,
 
         <!-- Varyant Visable -->
         <script>

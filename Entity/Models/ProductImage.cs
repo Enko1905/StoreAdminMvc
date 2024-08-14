@@ -7,13 +7,17 @@ namespace Entities.Models
     public class ProductImage
     {
         [Key]
-        public int ProductImageId { get; set; }
-        [MaxLength(800)]
-        public string? ImageUrl { get; set; }
+        public int Id { get; set; }
 
+        [MaxLength(300)]
+        public string? ImageUrl { get; set; }
+        public string? Alt { get; set; }
+       
         [ForeignKey("Products")]
         public int ProductId { get; set; }
-        public Products Products { get; set; }
+        public Products? Products { get; set; }
+
+
     }
 
 }

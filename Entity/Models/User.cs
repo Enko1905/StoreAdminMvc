@@ -11,10 +11,10 @@ namespace Entities.Models
     public class User
     {
         [Key]
-        public int UserId { get; set; }
+        public int Id { get; set; }
 
         [Required, MaxLength(100)]
-        public string UserName { get; set; }
+        public string Name { get; set; }
 
         [Required, MaxLength(100)]
         public string Email { get; set; }
